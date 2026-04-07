@@ -1,0 +1,136 @@
+:root {
+  --primary: #0a2342;
+  --accent: #e3b04b;
+  --text: #2d3436;
+  --bg: #ffffff;
+  --section-alt: #f4f7f6;
+  --card-bg: #ffffff;
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+body.dark-mode {
+  --primary: #e3b04b;
+  --accent: #ffcf71;
+  --text: #f4f7f6;
+  --bg: #050f1a;
+  --section-alt: #091421;
+  --card-bg: #112233;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Outfit", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* --- Navigation & Mobile Menu --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 8%;
+  background: var(--bg);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 2000;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+.burger svg {
+  width: 30px;
+  fill: var(--text);
+}
+
+@media (max-width: 992px) {
+  .nav-links {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    height: 100vh;
+    width: 280px;
+    background: var(--card-bg);
+    flex-direction: column;
+    padding: 100px 40px;
+    transition: var(--transition);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+  }
+  .nav-links.active {
+    right: 0;
+  }
+  .burger {
+    display: block;
+  }
+}
+
+/* --- Layout --- */
+.container {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+.card {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 12px;
+  border-top: 4px solid var(--accent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.btn {
+  background: var(--accent);
+  color: #000;
+  padding: 14px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(227, 176, 75, 0.4);
+}
+
+.tagline {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 10px;
+}

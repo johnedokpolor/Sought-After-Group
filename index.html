@@ -1,0 +1,2315 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Sought After Group | Raising the Standard of Workplace Excellence
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+      /* =========================================================
+   TOKENS & THEME
+   ========================================================= */
+      :root {
+        --navy: #0a2342;
+        --navy-mid: #0d2d52;
+        --navy-light: #163a6b;
+        --gold: #e3b04b;
+        --gold-light: #f0c96a;
+        --gold-dim: rgba(227, 176, 75, 0.14);
+        --gold-dim2: rgba(227, 176, 75, 0.07);
+
+        /* light mode surfaces */
+        --bg: #faf7f2;
+        --surface: #ffffff;
+        --surface2: #f0ebe2;
+        --surface3: #e6dfd4;
+        --card-bg: #ffffff;
+        --hero-bg: #0a2342;
+
+        /* light mode text */
+        --text: #1a2e4a;
+        --text-2: #3d5070;
+        --text-3: #6b80a3;
+
+        /* borders & shadows */
+        --border: rgba(10, 35, 66, 0.1);
+        --border2: rgba(10, 35, 66, 0.06);
+        --shadow: 0 2px 28px rgba(10, 35, 66, 0.09);
+        --shadow-hover: 0 8px 48px rgba(10, 35, 66, 0.14);
+
+        --radius: 14px;
+        --radius-sm: 8px;
+        --transition: 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      [data-theme="dark"] {
+        --bg: #06101e;
+        --surface: #0b1929;
+        --surface2: #101f35;
+        --surface3: #152540;
+        --card-bg: #0b1929;
+        --hero-bg: #030c18;
+
+        --text: #e8dfc8;
+        --text-2: #96aac8;
+        --text-3: #566d90;
+
+        --border: rgba(255, 255, 255, 0.08);
+        --border2: rgba(255, 255, 255, 0.04);
+        --shadow: 0 2px 28px rgba(0, 0, 0, 0.4);
+        --shadow-hover: 0 8px 48px rgba(0, 0, 0, 0.55);
+      }
+
+      /* =========================================================
+   RESET & BASE
+   ========================================================= */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        overflow-x: hidden;
+        transition:
+          background var(--transition),
+          color var(--transition);
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Playfair Display", serif;
+        color: var(--text);
+        line-height: 1.22;
+      }
+      p {
+        color: var(--text-2);
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+      input,
+      select,
+      button,
+      textarea {
+        font-family: "Inter", sans-serif;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* =========================================================
+   UTILITY
+   ========================================================= */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .section-tag {
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.75rem;
+        display: block;
+      }
+      .section-title {
+        font-size: clamp(1.9rem, 4vw, 2.9rem);
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+      }
+      .section-sub {
+        font-size: 1.03rem;
+        color: var(--text-2);
+        max-width: 560px;
+        line-height: 1.8;
+        margin-bottom: 0;
+      }
+      .gold-bar {
+        width: 44px;
+        height: 3px;
+        background: var(--gold);
+        border-radius: 2px;
+        margin-bottom: 1.5rem;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      /* =========================================================
+   STICKY NAV
+   ========================================================= */
+      #site-nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        transition:
+          background var(--transition),
+          border-color var(--transition);
+      }
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+      .nav-logo {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .nav-logo-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.08rem;
+        font-weight: 700;
+        color: var(--navy);
+        letter-spacing: 0.01em;
+        transition: color var(--transition);
+      }
+      [data-theme="dark"] .nav-logo-name {
+        color: var(--gold);
+      }
+      .nav-logo-sub {
+        font-size: 0.56rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .nav-links {
+        display: flex;
+        gap: 2.2rem;
+      }
+      .nav-links a {
+        font-size: 0.76rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-2);
+        transition: color var(--transition);
+        position: relative;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        right: 0;
+        height: 1.5px;
+        background: var(--gold);
+        transform: scaleX(0);
+        transition: transform var(--transition);
+        transform-origin: left;
+      }
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+      .nav-links a:hover::after {
+        transform: scaleX(1);
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .theme-btn {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 6px 14px;
+        cursor: pointer;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: var(--text-2);
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        transition: all var(--transition);
+        white-space: nowrap;
+      }
+      .theme-btn:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+      .theme-btn svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+
+      .btn-nav-cta {
+        background: var(--gold);
+        color: var(--navy);
+        border: none;
+        border-radius: 7px;
+        padding: 9px 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition: all var(--transition);
+        white-space: nowrap;
+      }
+      .btn-nav-cta:hover {
+        background: var(--gold-light);
+        transform: translateY(-1px);
+      }
+
+      .burger-btn {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        color: var(--text);
+        transition: color var(--transition);
+      }
+      .burger-btn:hover {
+        color: var(--gold);
+      }
+
+      /* =========================================================
+   MOBILE DRAWER
+   ========================================================= */
+      #mobile-drawer {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        background: var(--bg);
+        flex-direction: column;
+        padding: 5.5rem 2rem 2.5rem;
+        transform: translateX(100%);
+        opacity: 0;
+        transition:
+          transform 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.38s ease;
+      }
+      #mobile-drawer.open {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      .drawer-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        border-top: 1px solid var(--border);
+      }
+      .drawer-nav a {
+        display: block;
+        padding: 1.1rem 0;
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--text);
+        border-bottom: 1px solid var(--border);
+        transition:
+          color var(--transition),
+          padding-left var(--transition);
+      }
+      .drawer-nav a:hover {
+        color: var(--gold);
+        padding-left: 0.5rem;
+      }
+      .drawer-actions {
+        margin-top: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+      .drawer-cta {
+        background: var(--gold);
+        color: var(--navy);
+        border: none;
+        border-radius: 9px;
+        padding: 15px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-align: center;
+        transition: background var(--transition);
+      }
+      .drawer-cta:hover {
+        background: var(--gold-light);
+      }
+      .drawer-theme {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        padding: 13px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-2);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all var(--transition);
+      }
+      .drawer-theme:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+
+      /* =========================================================
+   SECTION WRAPPER
+   ========================================================= */
+      section {
+        padding: 6rem 0;
+      }
+
+      /* =========================================================
+   HERO
+   ========================================================= */
+      #hero {
+        background: var(--hero-bg);
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        padding: 7rem 0 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-grid-lines {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          repeating-linear-gradient(
+            90deg,
+            rgba(227, 176, 75, 0.025) 0,
+            rgba(227, 176, 75, 0.025) 1px,
+            transparent 1px,
+            transparent 100px
+          ),
+          repeating-linear-gradient(
+            0deg,
+            rgba(227, 176, 75, 0.015) 0,
+            rgba(227, 176, 75, 0.015) 1px,
+            transparent 1px,
+            transparent 100px
+          );
+      }
+      .hero-circle {
+        position: absolute;
+        right: -180px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 700px;
+        height: 700px;
+        border-radius: 50%;
+        border: 80px solid rgba(227, 176, 75, 0.04);
+        pointer-events: none;
+      }
+      .hero-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-eyebrow {
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.25rem;
+        display: block;
+      }
+      .hero-title {
+        font-size: clamp(2.4rem, 5.5vw, 4rem);
+        font-weight: 700;
+        color: #f5f0e8;
+        line-height: 1.13;
+        margin-bottom: 1.6rem;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .hero-body {
+        font-size: 1.05rem;
+        color: rgba(245, 240, 232, 0.6);
+        line-height: 1.82;
+        margin-bottom: 2.4rem;
+        max-width: 480px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        background: var(--gold);
+        color: var(--navy);
+        border: none;
+        border-radius: 7px;
+        padding: 14px 30px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition: all var(--transition);
+        white-space: nowrap;
+      }
+      .btn-primary:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(227, 176, 75, 0.35);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: rgba(245, 240, 232, 0.8);
+        border: 1px solid rgba(245, 240, 232, 0.25);
+        border-radius: 7px;
+        padding: 14px 30px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition: all var(--transition);
+        white-space: nowrap;
+      }
+      .btn-ghost:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+      }
+      .stat-card {
+        border: 1px solid rgba(227, 176, 75, 0.18);
+        border-radius: var(--radius);
+        padding: 1.8rem 1.6rem;
+        background: rgba(255, 255, 255, 0.03);
+        transition: border-color var(--transition);
+      }
+      .stat-card:hover {
+        border-color: rgba(227, 176, 75, 0.45);
+      }
+      .stat-num {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--gold);
+        line-height: 1;
+        display: block;
+      }
+      .stat-label {
+        font-size: 0.8rem;
+        color: rgba(245, 240, 232, 0.45);
+        margin-top: 0.45rem;
+        line-height: 1.5;
+        display: block;
+      }
+
+      /* =========================================================
+   CHALLENGES
+   ========================================================= */
+      #challenges {
+        background: var(--surface2);
+      }
+      .challenges-header {
+        margin-bottom: 3rem;
+      }
+      .challenges-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+      }
+      .challenge-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2rem 1.75rem;
+        transition:
+          border-color var(--transition),
+          box-shadow var(--transition),
+          transform var(--transition);
+      }
+      .challenge-card:hover {
+        border-color: var(--gold);
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-5px);
+      }
+      .challenge-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 11px;
+        background: var(--gold-dim);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.3rem;
+      }
+      .challenge-icon svg {
+        width: 22px;
+        height: 22px;
+        stroke: var(--gold);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .challenge-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.6rem;
+      }
+      .challenge-card p {
+        font-size: 0.87rem;
+        color: var(--text-3);
+        line-height: 1.72;
+      }
+
+      /* =========================================================
+   SERVICES
+   ========================================================= */
+      #services {
+        background: var(--bg);
+      }
+      .services-header {
+        margin-bottom: 3rem;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      .service-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition:
+          border-color var(--transition),
+          box-shadow var(--transition),
+          transform var(--transition);
+      }
+      .service-card:hover {
+        border-color: rgba(227, 176, 75, 0.45);
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-5px);
+      }
+      .service-top {
+        background: var(--navy);
+        padding: 2rem;
+      }
+      [data-theme="dark"] .service-top {
+        background: #111f35;
+      }
+      .service-badge {
+        display: inline-block;
+        background: rgba(227, 176, 75, 0.18);
+        color: var(--gold);
+        border-radius: 4px;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        margin-bottom: 1rem;
+      }
+      .service-top h3 {
+        font-size: 1.25rem;
+        color: #f5f0e8;
+        margin-bottom: 0.5rem;
+      }
+      .service-top p {
+        font-size: 0.84rem;
+        color: rgba(245, 240, 232, 0.5);
+      }
+      .service-body {
+        padding: 1.75rem 2rem;
+        flex: 1;
+      }
+      .service-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+      }
+      .service-list li {
+        font-size: 0.875rem;
+        color: var(--text-2);
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-start;
+        line-height: 1.65;
+      }
+      .service-list li::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--gold);
+        margin-top: 9px;
+        flex-shrink: 0;
+      }
+
+      /* =========================================================
+   WHO WE SERVE
+   ========================================================= */
+      #serve {
+        background: var(--surface2);
+      }
+      .serve-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+      .serve-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition:
+          border-color var(--transition),
+          box-shadow var(--transition),
+          transform var(--transition);
+      }
+      .serve-card:hover {
+        border-color: var(--gold);
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-5px);
+      }
+      .serve-card-head {
+        padding: 2rem 2rem 1.5rem;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: flex-start;
+        gap: 1.1rem;
+      }
+      .serve-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .serve-icon.navy-bg {
+        background: var(--navy);
+      }
+      .serve-icon.gold-bg {
+        background: var(--gold-dim);
+      }
+      .serve-icon svg {
+        width: 24px;
+        height: 24px;
+        stroke-width: 1.65;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+      .serve-icon.navy-bg svg {
+        stroke: var(--gold);
+      }
+      .serve-icon.gold-bg svg {
+        stroke: var(--gold);
+      }
+      .serve-card-head h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+      }
+      .serve-card-head .sub {
+        font-size: 0.78rem;
+        color: var(--text-3);
+      }
+      .serve-card-body {
+        padding: 1.6rem 2rem;
+      }
+      .serve-card-body p {
+        font-size: 0.875rem;
+        line-height: 1.78;
+      }
+      .serve-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+      }
+      .tag {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        padding: 3px 10px;
+        color: var(--text-3);
+      }
+      [data-theme="dark"] .tag {
+        background: var(--surface3);
+      }
+
+      /* =========================================================
+   WELLBEING
+   ========================================================= */
+      #wellbeing {
+        background: var(--navy);
+        position: relative;
+        overflow: hidden;
+      }
+      [data-theme="dark"] #wellbeing {
+        background: #030c18;
+      }
+      .wellbeing-deco {
+        position: absolute;
+        right: -140px;
+        top: -140px;
+        width: 440px;
+        height: 440px;
+        border-radius: 50%;
+        border: 70px solid rgba(227, 176, 75, 0.05);
+        pointer-events: none;
+      }
+      .wellbeing-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: start;
+        position: relative;
+        z-index: 1;
+      }
+      .wb-left .section-tag {
+        color: var(--gold);
+      }
+      .wb-left .section-title {
+        color: #f5f0e8;
+      }
+      .wb-left .section-title em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .wb-left .section-sub {
+        color: rgba(245, 240, 232, 0.52);
+        margin-bottom: 2.5rem;
+      }
+      .wb-left .gold-bar {
+        background: var(--gold);
+      }
+
+      .courses {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .course {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(227, 176, 75, 0.14);
+        border-radius: var(--radius-sm);
+        padding: 1.3rem 1.5rem;
+        display: flex;
+        gap: 1.1rem;
+        transition: border-color var(--transition);
+      }
+      .course:hover {
+        border-color: rgba(227, 176, 75, 0.4);
+      }
+      .course-num {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--gold);
+        opacity: 0.45;
+        min-width: 2.5rem;
+        line-height: 1;
+      }
+      .course h4 {
+        font-size: 0.95rem;
+        color: #f5f0e8;
+        margin-bottom: 0.28rem;
+      }
+      .course p {
+        font-size: 0.82rem;
+        color: rgba(245, 240, 232, 0.42);
+        line-height: 1.65;
+      }
+
+      .wb-right {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+        padding-top: 0.5rem;
+      }
+      .wb-stat {
+        border: 1px solid rgba(227, 176, 75, 0.15);
+        border-radius: var(--radius);
+        padding: 2rem 2rem 1.75rem;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .wb-stat-num {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--gold);
+        line-height: 1;
+      }
+      .wb-stat-label {
+        font-size: 0.84rem;
+        color: rgba(245, 240, 232, 0.44);
+        margin-top: 0.4rem;
+        line-height: 1.5;
+      }
+      .wb-quote {
+        border-left: 3px solid var(--gold);
+        padding: 0.25rem 0 0.25rem 1.4rem;
+      }
+      .wb-quote blockquote {
+        font-family: "Playfair Display", serif;
+        font-size: 1.05rem;
+        font-style: italic;
+        color: rgba(245, 240, 232, 0.65);
+        line-height: 1.75;
+      }
+      .wb-quote cite {
+        display: block;
+        font-size: 0.7rem;
+        font-style: normal;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(245, 240, 232, 0.28);
+        margin-top: 0.75rem;
+      }
+      .wb-includes {
+        border: 1px solid rgba(227, 176, 75, 0.14);
+        border-radius: var(--radius);
+        padding: 1.75rem;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .wb-includes-title {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      /* =========================================================
+   LEAD MAGNETS
+   ========================================================= */
+      #leads {
+        background: var(--bg);
+      }
+      .leads-header {
+        margin-bottom: 3rem;
+      }
+      .leads-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .lead-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition:
+          border-color var(--transition),
+          box-shadow var(--transition);
+      }
+      .lead-card:hover {
+        border-color: rgba(227, 176, 75, 0.5);
+        box-shadow: var(--shadow-hover);
+      }
+      .lead-head {
+        background: var(--navy);
+        padding: 2.25rem 2rem;
+      }
+      [data-theme="dark"] .lead-head {
+        background: #111f35;
+      }
+      .lead-badge {
+        display: inline-block;
+        background: var(--gold);
+        color: var(--navy);
+        border-radius: 4px;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        margin-bottom: 1.1rem;
+      }
+      .lead-head h3 {
+        font-size: 1.35rem;
+        color: #f5f0e8;
+        margin-bottom: 0.6rem;
+        font-style: italic;
+      }
+      .lead-head p {
+        font-size: 0.84rem;
+        color: rgba(245, 240, 232, 0.48);
+        line-height: 1.7;
+      }
+      .lead-body {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+      .lead-input {
+        width: 100%;
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        padding: 12px 15px;
+        font-size: 0.875rem;
+        color: var(--text);
+        transition:
+          border-color var(--transition),
+          background var(--transition);
+        outline: none;
+        appearance: none;
+      }
+      .lead-input:focus {
+        border-color: var(--gold);
+        background: var(--surface);
+      }
+      .lead-input::placeholder {
+        color: var(--text-3);
+      }
+      .lead-submit {
+        width: 100%;
+        background: var(--gold);
+        color: var(--navy);
+        border: none;
+        border-radius: 7px;
+        padding: 14px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition: all var(--transition);
+        margin-top: 0.2rem;
+      }
+      .lead-submit:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+      }
+      .lead-submit:disabled {
+        opacity: 0.6;
+        cursor: default;
+        transform: none;
+      }
+      .lead-note {
+        font-size: 0.7rem;
+        color: var(--text-3);
+        text-align: center;
+        line-height: 1.6;
+      }
+      .success-msg {
+        display: none;
+        text-align: center;
+        padding: 1.5rem;
+        color: var(--gold);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      /* =========================================================
+   FOOTER
+   ========================================================= */
+      footer {
+        background: var(--navy);
+        padding: 4rem 0 0;
+      }
+      [data-theme="dark"] footer {
+        background: #030c18;
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 2.2fr 1fr 1fr;
+        gap: 3rem;
+        padding-bottom: 3.5rem;
+      }
+      .footer-brand-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--gold);
+        margin-bottom: 0.3rem;
+      }
+      .footer-brand-sub {
+        font-size: 0.57rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(227, 176, 75, 0.45);
+        margin-bottom: 1rem;
+        display: block;
+      }
+      .footer-brand p {
+        font-size: 0.84rem;
+        color: rgba(245, 240, 232, 0.32);
+        line-height: 1.8;
+        max-width: 320px;
+      }
+      .footer-col h4 {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.2rem;
+        font-family: "Inter", sans-serif;
+      }
+      .footer-col ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+      }
+      .footer-col ul li a {
+        font-size: 0.84rem;
+        color: rgba(245, 240, 232, 0.36);
+        transition: color var(--transition);
+      }
+      .footer-col ul li a:hover {
+        color: var(--gold);
+      }
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .footer-bottom p {
+        font-size: 0.74rem;
+        color: rgba(245, 240, 232, 0.25);
+      }
+
+      /* =========================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================= */
+      @media (max-width: 1024px) {
+        .challenges-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .serve-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .wellbeing-inner {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .wb-right {
+          padding-top: 0;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .hero-inner {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .hero-circle {
+          display: none;
+        }
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer-brand {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (max-width: 700px) {
+        section {
+          padding: 4rem 0;
+        }
+        #hero {
+          min-height: auto;
+          padding: 5.5rem 0 4rem;
+        }
+        .container {
+          padding: 0 1.25rem;
+        }
+        .hero-inner {
+          padding: 0 1.25rem;
+        }
+
+        .nav-links,
+        .btn-nav-cta {
+          display: none;
+        }
+        .burger-btn {
+          display: flex;
+        }
+        #mobile-drawer {
+          display: flex;
+        }
+
+        .challenges-grid {
+          grid-template-columns: 1fr;
+        }
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        .serve-grid {
+          grid-template-columns: 1fr;
+        }
+        .leads-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-stats {
+          grid-template-columns: 1fr 1fr;
+          gap: 0.85rem;
+        }
+        .stat-num {
+          font-size: 2.2rem;
+        }
+
+        .footer-inner {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.4rem;
+        }
+
+        .wellbeing-inner {
+          padding: 0 1.25rem;
+        }
+        #wellbeing {
+          padding: 4rem 0;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .hero-stats {
+          grid-template-columns: 1fr;
+        }
+        .hero-actions {
+          flex-direction: column;
+        }
+        .btn-primary,
+        .btn-ghost {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      /* =========================================================
+   SCROLLBAR STYLING
+   ========================================================= */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(227, 176, 75, 0.35);
+        border-radius: 99px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(227, 176, 75, 0.6);
+      }
+
+      /* =========================================================
+   SELECTION
+   ========================================================= */
+      ::selection {
+        background: rgba(227, 176, 75, 0.25);
+        color: var(--navy);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ==================== NAV ==================== -->
+    <nav id="site-nav">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">
+          <span class="nav-logo-name">Sought After Group</span>
+          <span class="nav-logo-sub">Workplace Excellence</span>
+        </a>
+
+        <nav class="nav-links">
+          <a href="#hero">Home</a>
+          <a href="#services">Services</a>
+          <a href="#serve">Who We Serve</a>
+          <a href="#wellbeing">Wellbeing</a>
+        </nav>
+
+        <div class="nav-right">
+          <button
+            class="theme-btn"
+            id="theme-btn"
+            onclick="toggleTheme()"
+            aria-label="Toggle theme"
+          >
+            <!-- sun icon (shown in dark mode) -->
+            <svg
+              id="icon-sun"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="display: none"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+            <!-- moon icon (shown in light mode) -->
+            <svg
+              id="icon-moon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <span id="theme-label">Dark Mode</span>
+          </button>
+          <button class="btn-nav-cta" onclick="scrollTo('leads')">
+            Get Started
+          </button>
+          <button
+            class="burger-btn"
+            id="burger-btn"
+            onclick="toggleDrawer()"
+            aria-label="Open menu"
+          >
+            <svg
+              id="burger-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+            <svg
+              id="close-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              style="display: none"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== MOBILE DRAWER ==================== -->
+    <div id="mobile-drawer" role="dialog" aria-label="Navigation menu">
+      <nav class="drawer-nav">
+        <a href="#hero" onclick="closeDrawer()">Home</a>
+        <a href="#services" onclick="closeDrawer()">Services</a>
+        <a href="#serve" onclick="closeDrawer()">Who We Serve</a>
+        <a href="#wellbeing" onclick="closeDrawer()">Wellbeing</a>
+        <a href="#leads" onclick="closeDrawer()">Contact</a>
+      </nav>
+      <div class="drawer-actions">
+        <button
+          class="drawer-cta"
+          onclick="
+            closeDrawer();
+            scrollTo('leads');
+          "
+        >
+          Get Started Today
+        </button>
+        <button class="drawer-theme" onclick="toggleTheme()">
+          <svg
+            id="drawer-sun"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="display: none"
+          >
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <svg
+            id="drawer-moon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+          <span id="drawer-theme-label">Switch to Dark Mode</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== HERO ==================== -->
+    <section id="hero">
+      <div class="hero-grid-lines"></div>
+      <div class="hero-circle"></div>
+      <div class="hero-inner">
+        <div class="hero-content">
+          <span class="hero-eyebrow"
+            >Advisory · Fractional HR · Workplace Wellbeing</span
+          >
+          <h1 class="hero-title">
+            Raising the Standard of <em>Workplace Excellence</em>
+          </h1>
+          <p class="hero-body">
+            We partner with organisations to build high-performing,
+            people-centred workplaces — through strategic HR advisory,
+            fractional support, and evidence-based wellbeing programmes that
+            create lasting, meaningful change.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="scrollTo('services')">
+              Explore Our Services
+            </button>
+            <button class="btn-ghost" onclick="scrollTo('leads')">
+              Book a Free Call
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-num">12+</span>
+            <span class="stat-label">Years Combined HR Experience</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Specialist Practice Areas</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">200+</span>
+            <span class="stat-label">Organisations Supported</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">94%</span>
+            <span class="stat-label">Client Retention Rate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CHALLENGES ==================== -->
+    <section id="challenges">
+      <div class="container">
+        <div class="challenges-header reveal">
+          <span class="section-tag">The Problem We Solve</span>
+          <h2 class="section-title">Challenges Facing Today's Workplaces</h2>
+          <div class="gold-bar"></div>
+          <p class="section-sub">
+            Organisations are navigating unprecedented pressure. We understand
+            these barriers deeply — and we have the frameworks and experience to
+            dismantle them.
+          </p>
+        </div>
+        <div class="challenges-grid">
+          <div class="challenge-card reveal">
+            <div class="challenge-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <h3>Staff Burnout</h3>
+            <p>
+              Rising workloads and poor wellbeing structures are driving talent
+              out the door. Sustainable staffing demands proactive, not
+              reactive, support systems.
+            </p>
+          </div>
+
+          <div class="challenge-card reveal">
+            <div class="challenge-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <line x1="9" y1="9" x2="15" y2="9" />
+                <line x1="9" y1="13" x2="13" y2="13" />
+              </svg>
+            </div>
+            <h3>HR System Gaps</h3>
+            <p>
+              Outdated policies, missing compliance frameworks, and ad-hoc
+              processes leave organisations exposed and under-performing when it
+              matters most.
+            </p>
+          </div>
+
+          <div class="challenge-card reveal">
+            <div class="challenge-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <h3>Leadership Pressure</h3>
+            <p>
+              Leaders are expected to manage teams, drive performance, and
+              sustain culture — often without the coaching, tools, or space to
+              do so effectively.
+            </p>
+          </div>
+
+          <div class="challenge-card reveal">
+            <div class="challenge-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+            </div>
+            <h3>Limited Development</h3>
+            <p>
+              When learning and development is treated as a cost rather than an
+              investment, organisations stagnate. Growth-ready people build
+              growth-ready businesses.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section id="services">
+      <div class="container">
+        <div class="services-header reveal">
+          <span class="section-tag">What We Offer</span>
+          <h2 class="section-title">Our Core Services</h2>
+          <div class="gold-bar"></div>
+          <p class="section-sub">
+            Bespoke, expert-led solutions across HR, advisory, and professional
+            development — designed to scale with your organisation and its
+            ambitions.
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card reveal">
+            <div class="service-top">
+              <span class="service-badge">Flagship Service</span>
+              <h3>Fractional HR Support</h3>
+              <p>
+                Senior HR expertise on your terms — without the full-time
+                overhead or commitment.
+              </p>
+            </div>
+            <div class="service-body">
+              <ul class="service-list">
+                <li>
+                  Full HR policy audit and overhaul — your complete professional
+                  HR facelift
+                </li>
+                <li>Contract, handbook, and compliance documentation review</li>
+                <li>
+                  Strategic recruitment design: job adverts, interview
+                  frameworks, onboarding
+                </li>
+                <li>Bespoke offer letter and employment contract templates</li>
+                <li>
+                  Disciplinary, grievance, and performance management guidance
+                </li>
+                <li>Culture assessment and workforce planning advisory</li>
+                <li>
+                  On-call HR support for day-to-day people and employment
+                  matters
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-top">
+              <span class="service-badge">Development</span>
+              <h3>Professional Development</h3>
+              <p>
+                Accredited training and coaching to elevate every layer of your
+                team.
+              </p>
+            </div>
+            <div class="service-body">
+              <ul class="service-list">
+                <li>
+                  Leadership coaching and emerging-leader accelerator programmes
+                </li>
+                <li>
+                  De-escalation techniques for childcare and high-pressure
+                  environments
+                </li>
+                <li>
+                  Emotional Regulation — early years specialist practitioner
+                  training
+                </li>
+                <li>Child safeguarding and duty-of-care awareness workshops</li>
+                <li>
+                  Behaviour management frameworks for childcare practitioners
+                </li>
+                <li>
+                  Team cohesion, communication, and conflict resolution
+                  workshops
+                </li>
+                <li>
+                  Customised CPD programmes aligned to your sector requirements
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-top">
+              <span class="service-badge">Advisory</span>
+              <h3>Strategic Advisory</h3>
+              <p>
+                Board-level thinking applied to your most pressing people and
+                culture challenges.
+              </p>
+            </div>
+            <div class="service-body">
+              <ul class="service-list">
+                <li>
+                  Organisational health assessments and culture diagnostics
+                </li>
+                <li>
+                  Change management strategy and stakeholder engagement planning
+                </li>
+                <li>
+                  Diversity, Equity and Inclusion strategy and implementation
+                </li>
+                <li>
+                  HR due diligence for mergers, acquisitions, and restructures
+                </li>
+                <li>
+                  Executive team facilitation and leadership away-day design
+                </li>
+                <li>Workforce data insights and people analytics reporting</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WHO WE SERVE ==================== -->
+    <section id="serve">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-tag">Sector Expertise</span>
+          <h2 class="section-title">Who We Serve</h2>
+          <div class="gold-bar"></div>
+          <p class="section-sub">
+            We bring deep sector knowledge to every engagement — speaking your
+            language, understanding your pressures, and building solutions that
+            fit your world.
+          </p>
+        </div>
+        <div class="serve-grid">
+          <div class="serve-card reveal">
+            <div class="serve-card-head">
+              <div class="serve-icon navy-bg">
+                <svg viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+              </div>
+              <div>
+                <h3>Childcare Centres</h3>
+                <p class="sub">
+                  Nurseries, early years &amp; after-school settings
+                </p>
+              </div>
+            </div>
+            <div class="serve-card-body">
+              <p>
+                From nurseries to holiday clubs, we understand the unique HR,
+                safeguarding, and workforce dynamics of early years provision.
+                Our specialist programmes — including de-escalation and
+                emotional regulation training — are built specifically for your
+                practitioners and the children in their care.
+              </p>
+              <div class="serve-tags">
+                <span class="tag">Safeguarding</span>
+                <span class="tag">EYFS Compliance</span>
+                <span class="tag">Staff Wellbeing</span>
+                <span class="tag">CPD Training</span>
+                <span class="tag">Ofsted Readiness</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="serve-card reveal">
+            <div class="serve-card-head">
+              <div class="serve-icon gold-bg">
+                <svg viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                  <path d="M2 17l10 5 10-5" />
+                  <path d="M2 12l10 5 10-5" />
+                </svg>
+              </div>
+              <div>
+                <h3>Faith-Based Organisations</h3>
+                <p class="sub">Churches, charities &amp; ministries</p>
+              </div>
+            </div>
+            <div class="serve-card-body">
+              <p>
+                We respect the values and ethos that underpin faith communities.
+                Our advisory work helps you professionalise your HR practices,
+                protect your people, and fulfil your mission — without
+                compromising your culture, convictions, or the spirit in which
+                you serve.
+              </p>
+              <div class="serve-tags">
+                <span class="tag">Values Alignment</span>
+                <span class="tag">Volunteer HR</span>
+                <span class="tag">Charity Compliance</span>
+                <span class="tag">Culture Integrity</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="serve-card reveal">
+            <div class="serve-card-head">
+              <div class="serve-icon navy-bg">
+                <svg viewBox="0 0 24 24" stroke="currentColor">
+                  <rect x="2" y="7" width="20" height="14" rx="2" />
+                  <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                  <line x1="12" y1="12" x2="12" y2="16" />
+                  <line x1="10" y1="14" x2="14" y2="14" />
+                </svg>
+              </div>
+              <div>
+                <h3>Small Businesses</h3>
+                <p class="sub">SMEs growing with confidence</p>
+              </div>
+            </div>
+            <div class="serve-card-body">
+              <p>
+                Growing businesses rarely have the budget for a full HR team —
+                but they carry all the risk. We act as your embedded HR partner:
+                building the infrastructure, policies, and people processes that
+                allow you to scale sustainably, safely, and with complete
+                confidence.
+              </p>
+              <div class="serve-tags">
+                <span class="tag">Fractional HR</span>
+                <span class="tag">Scaling Support</span>
+                <span class="tag">Recruitment</span>
+                <span class="tag">Policy Design</span>
+                <span class="tag">Employment Law</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WELLBEING ==================== -->
+    <section id="wellbeing">
+      <div class="wellbeing-deco"></div>
+      <div class="wellbeing-inner">
+        <div class="wb-left reveal">
+          <span class="section-tag">Workplace Wellbeing</span>
+          <h2 class="section-title">People Who Thrive, <em>Perform</em></h2>
+          <div class="gold-bar"></div>
+          <p class="section-sub">
+            Our wellbeing practice is built on a simple truth: organisations
+            that invest in their people's mental, emotional, and professional
+            health outperform those that don't. Every programme is
+            evidence-based and practically delivered.
+          </p>
+          <div class="courses">
+            <div class="course reveal">
+              <span class="course-num">01</span>
+              <div>
+                <h4>De-escalation Techniques</h4>
+                <p>
+                  Equipping childcare and frontline staff with practical skills
+                  to manage challenging behaviours safely, calmly, and
+                  confidently in the moment.
+                </p>
+              </div>
+            </div>
+
+            <div class="course reveal">
+              <span class="course-num">02</span>
+              <div>
+                <h4>Emotional Regulation Training</h4>
+                <p>
+                  Supporting early years practitioners to model and teach
+                  emotional regulation — a proven cornerstone of healthy child
+                  development and setting culture.
+                </p>
+              </div>
+            </div>
+
+            <div class="course reveal">
+              <span class="course-num">03</span>
+              <div>
+                <h4>Staff Resilience &amp; Burnout Prevention</h4>
+                <p>
+                  Structured group and 1-to-1 programmes that build individual
+                  resilience and create psychologically safe, high-performing
+                  team cultures.
+                </p>
+              </div>
+            </div>
+
+            <div class="course reveal">
+              <span class="course-num">04</span>
+              <div>
+                <h4>Leadership Wellbeing Coaching</h4>
+                <p>
+                  Supporting leaders to manage their own wellbeing first — so
+                  they can lead others with clarity, compassion, and sustained
+                  consistency.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wb-right reveal">
+          <div class="wb-stat">
+            <div class="wb-stat-num">76%</div>
+            <div class="wb-stat-label">
+              of employees cite poor wellbeing as a primary reason for leaving
+              their role
+            </div>
+          </div>
+          <div class="wb-stat">
+            <div class="wb-stat-num">£1,652</div>
+            <div class="wb-stat-label">
+              average annual cost per employee of presenteeism caused by poor
+              mental health
+            </div>
+          </div>
+          <div class="wb-quote">
+            <blockquote>
+              "Wellbeing is not a perk. It is the strategic foundation upon
+              which sustainable, exceptional organisations are built."
+            </blockquote>
+            <cite>— Sought After Group</cite>
+          </div>
+          <div class="wb-includes">
+            <span class="wb-includes-title"
+              >All Wellbeing Programmes Include</span
+            >
+            <ul class="service-list">
+              <li style="color: rgba(245, 240, 232, 0.5); font-size: 0.85rem">
+                Bespoke needs assessment prior to delivery
+              </li>
+              <li style="color: rgba(245, 240, 232, 0.5); font-size: 0.85rem">
+                In-person or virtual delivery options available
+              </li>
+              <li style="color: rgba(245, 240, 232, 0.5); font-size: 0.85rem">
+                Post-programme impact measurement and reporting
+              </li>
+              <li style="color: rgba(245, 240, 232, 0.5); font-size: 0.85rem">
+                Accredited facilitators and specialist practitioners
+              </li>
+              <li style="color: rgba(245, 240, 232, 0.5); font-size: 0.85rem">
+                Follow-up resources and ongoing support materials
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== LEAD MAGNETS ==================== -->
+    <section id="leads">
+      <div class="container">
+        <div class="leads-header reveal">
+          <span class="section-tag">Free Resources</span>
+          <h2 class="section-title">Start Your Journey Here</h2>
+          <div class="gold-bar"></div>
+          <p class="section-sub">
+            No commitment, no pressure — just practical, expert-crafted
+            resources to help you take a confident next step.
+          </p>
+        </div>
+        <div class="leads-grid">
+          <div class="lead-card reveal">
+            <div class="lead-head">
+              <span class="lead-badge">Free Download</span>
+              <h3>The Essential HR Checklist</h3>
+              <p>
+                25 critical HR checks every SME, childcare setting, or faith
+                organisation should complete today. Audit your exposure in under
+                30 minutes — no HR expertise required.
+              </p>
+            </div>
+            <div class="lead-body" id="form-checklist">
+              <input
+                class="lead-input"
+                type="text"
+                placeholder="Your full name"
+                id="cl-name"
+              />
+              <input
+                class="lead-input"
+                type="email"
+                placeholder="Work email address"
+                id="cl-email"
+              />
+              <input
+                class="lead-input"
+                type="text"
+                placeholder="Organisation name"
+                id="cl-org"
+              />
+              <button class="lead-submit" onclick="handleSubmit('checklist')">
+                Download Free Checklist
+              </button>
+              <p class="lead-note">
+                No spam. One useful email. Unsubscribe anytime.
+              </p>
+            </div>
+            <div class="success-msg" id="success-checklist">
+              ✓ &nbsp;Your checklist is on its way — check your inbox shortly.
+            </div>
+          </div>
+
+          <div class="lead-card reveal">
+            <div class="lead-head">
+              <span class="lead-badge">Complimentary</span>
+              <h3>Free Workplace Wellbeing Workshop</h3>
+              <p>
+                A 90-minute facilitated session for your team — exploring
+                stress, burnout, and practical tools to build a healthier
+                culture. Normally valued at £395.
+              </p>
+            </div>
+            <div class="lead-body" id="form-workshop">
+              <input
+                class="lead-input"
+                type="text"
+                placeholder="Your full name"
+                id="ws-name"
+              />
+              <input
+                class="lead-input"
+                type="email"
+                placeholder="Work email address"
+                id="ws-email"
+              />
+              <input
+                class="lead-input"
+                type="text"
+                placeholder="Organisation &amp; team size"
+                id="ws-org"
+              />
+              <select class="lead-input" id="ws-format">
+                <option value="" disabled selected>
+                  Preferred delivery format
+                </option>
+                <option>In-person (on-site)</option>
+                <option>Virtual (online)</option>
+                <option>Either works for us</option>
+              </select>
+              <button class="lead-submit" onclick="handleSubmit('workshop')">
+                Reserve My Free Workshop
+              </button>
+              <p class="lead-note">
+                Limited spots each month. We'll confirm within 2 business days.
+              </p>
+            </div>
+            <div class="success-msg" id="success-workshop">
+              ✓ &nbsp;Your spot is reserved — we'll be in touch within 48 hours.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-brand-name">Sought After Group</div>
+          <span class="footer-brand-sub"
+            >Raising the Standard of Workplace Excellence</span
+          >
+          <p>
+            Specialist advisory, fractional HR, and workplace wellbeing services
+            for childcare centres, faith-based organisations, and growing
+            businesses who understand that people are their greatest asset.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Fractional HR Support</a></li>
+            <li><a href="#services">Professional Development</a></li>
+            <li><a href="#services">Strategic Advisory</a></li>
+            <li><a href="#wellbeing">Wellbeing Programmes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#serve">Childcare Centres</a></li>
+            <li><a href="#serve">Faith Organisations</a></li>
+            <li><a href="#serve">Small Businesses</a></li>
+            <li><a href="#leads">Free Resources</a></li>
+            <li><a href="#leads">Book a Call</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Sought After Group. All rights reserved.</p>
+        <p>Designed for workplace excellence.</p>
+      </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+      /* ── THEME ── */
+      let isDark = false;
+
+      function toggleTheme() {
+        isDark = !isDark;
+        document.documentElement.setAttribute(
+          "data-theme",
+          isDark ? "dark" : "light",
+        );
+
+        document.getElementById("icon-sun").style.display = isDark
+          ? "block"
+          : "none";
+        document.getElementById("icon-moon").style.display = isDark
+          ? "none"
+          : "block";
+        document.getElementById("theme-label").textContent = isDark
+          ? "Light Mode"
+          : "Dark Mode";
+
+        document.getElementById("drawer-sun").style.display = isDark
+          ? "block"
+          : "none";
+        document.getElementById("drawer-moon").style.display = isDark
+          ? "none"
+          : "block";
+        document.getElementById("drawer-theme-label").textContent = isDark
+          ? "Switch to Light Mode"
+          : "Switch to Dark Mode";
+      }
+
+      /* ── DRAWER ── */
+      let drawerOpen = false;
+
+      function toggleDrawer() {
+        drawerOpen = !drawerOpen;
+        const drawer = document.getElementById("mobile-drawer");
+        drawer.classList.toggle("open", drawerOpen);
+        document.body.style.overflow = drawerOpen ? "hidden" : "";
+        document.getElementById("burger-icon").style.display = drawerOpen
+          ? "none"
+          : "block";
+        document.getElementById("close-icon").style.display = drawerOpen
+          ? "block"
+          : "none";
+      }
+
+      function closeDrawer() {
+        drawerOpen = false;
+        document.getElementById("mobile-drawer").classList.remove("open");
+        document.body.style.overflow = "";
+        document.getElementById("burger-icon").style.display = "block";
+        document.getElementById("close-icon").style.display = "none";
+      }
+
+      /* ── SMOOTH SCROLL ── */
+      function scrollTo(id) {
+        document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const target = document.querySelector(a.getAttribute("href"));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      /* ── FORM HANDLING ── */
+      function handleSubmit(type) {
+        const prefix = type === "checklist" ? "cl" : "ws";
+        const fields =
+          type === "checklist"
+            ? ["cl-name", "cl-email", "cl-org"]
+            : ["ws-name", "ws-email", "ws-org", "ws-format"];
+
+        let valid = true;
+        fields.forEach((id) => {
+          const el = document.getElementById(id);
+          if (!el || !el.value.trim()) {
+            if (el) {
+              el.style.borderColor = "#e3b04b";
+              el.focus();
+            }
+            valid = false;
+          } else {
+            el.style.borderColor = "";
+          }
+        });
+
+        if (!valid) return;
+
+        document.getElementById("form-" + type).style.display = "none";
+        document.getElementById("success-" + type).style.display = "block";
+      }
+
+      /* ── GSAP SCROLL ANIMATIONS ── */
+      window.addEventListener("load", () => {
+        if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined")
+          return;
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* Hero entrance */
+        const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        heroTl
+          .fromTo(
+            ".hero-eyebrow",
+            { opacity: 0, x: 20 },
+            { opacity: 1, x: 0, duration: 0.7 },
+            0.2,
+          )
+          .fromTo(
+            ".hero-title",
+            { opacity: 0, x: -30 },
+            { opacity: 1, x: 0, duration: 0.8 },
+            0.4,
+          )
+          .fromTo(
+            ".hero-body",
+            { opacity: 0, x: 20 },
+            { opacity: 1, x: 0, duration: 0.7 },
+            0.7,
+          )
+          .fromTo(
+            ".hero-actions",
+            { opacity: 0, x: 20 },
+            { opacity: 1, x: 0, duration: 0.6 },
+            0.95,
+          )
+          .fromTo(
+            ".stat-card",
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.12 },
+            0.6,
+          );
+
+        /* Scroll reveals */
+        gsap.utils.toArray(".reveal").forEach((el, i) => {
+          gsap.fromTo(
+            el,
+            { opacity: 0, y: 36 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.75,
+              ease: "power3.out",
+              delay: (i % 4) * 0.08,
+              scrollTrigger: {
+                trigger: el,
+                start: "top 88%",
+                toggleActions: "play none none none",
+              },
+            },
+          );
+        });
+
+        /* Challenge card stagger */
+        gsap.fromTo(
+          ".challenge-card",
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.65,
+            ease: "power3.out",
+            stagger: 0.12,
+            scrollTrigger: { trigger: ".challenges-grid", start: "top 82%" },
+          },
+        );
+
+        /* Service card stagger */
+        gsap.fromTo(
+          ".service-card",
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.65,
+            ease: "power3.out",
+            stagger: 0.14,
+            scrollTrigger: { trigger: ".services-grid", start: "top 82%" },
+          },
+        );
+
+        /* Serve card stagger */
+        gsap.fromTo(
+          ".serve-card",
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.65,
+            ease: "power3.out",
+            stagger: 0.14,
+            scrollTrigger: { trigger: ".serve-grid", start: "top 82%" },
+          },
+        );
+
+        /* Course item stagger */
+        gsap.fromTo(
+          ".course",
+          { opacity: 0, x: -24 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.55,
+            ease: "power2.out",
+            stagger: 0.12,
+            scrollTrigger: { trigger: ".courses", start: "top 82%" },
+          },
+        );
+
+        /* Lead card stagger */
+        gsap.fromTo(
+          ".lead-card",
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.65,
+            ease: "power3.out",
+            stagger: 0.18,
+            scrollTrigger: { trigger: ".leads-grid", start: "top 84%" },
+          },
+        );
+
+        /* Wellbeing stats count-up feel */
+        gsap.fromTo(
+          ".wb-stat",
+          { opacity: 0, scale: 0.96 },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            ease: "back.out(1.4)",
+            stagger: 0.15,
+            scrollTrigger: { trigger: ".wb-right", start: "top 80%" },
+          },
+        );
+      });
+    </script>
+  </body>
+</html>
