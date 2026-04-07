@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -18,40 +18,39 @@
       /* =========================================================
    TOKENS & THEME
    ========================================================= */
-          :root {
-        /*  :root {
-        /* Primary Brand Colors */
-        --navy: #1b4332;         /* Deep Forest Teal: Grounded Authority */
-        --navy-mid: #2d5a44;     /* Mid-tone Green */
-        --navy-light: #40916c;   /* Forest Green: Active elements */
-        --gold: #ddbea9;         /* Warm Sand: The human-centric accent */
-        --gold-light: #ffe8d6;   /* Soft Sand: Hover states */
-        --gold-dim: rgba(221, 190, 169, 0.2); 
-        --gold-dim2: rgba(221, 190, 169, 0.1);
+        
+  :root {
+        --navy: #0a2342;
+        --navy-mid: #0d2d52;
+        --navy-light: #163a6b;
+        --gold: #e3b04b;
+        --gold-light: #f0c96a;
+        --gold-dim: rgba(227, 176, 75, 0.14);
+        --gold-dim2: rgba(227, 176, 75, 0.07);
 
-        /* Light Mode Surfaces (Sand & Eucalyptus) */
-        --bg: #f8f7f2;           /* Very soft off-white with sand undertone */
+        /* light mode surfaces */
+        --bg: #faf7f2;
         --surface: #ffffff;
-        --surface2: #f0ede4;     /* Eucalyptus Tint: Soft and safe */
-        --surface3: #e6e1d6;     /* Darker Sand for section separation */
+        --surface2: #f0ebe2;
+        --surface3: #e6dfd4;
         --card-bg: #ffffff;
-        --hero-bg: #1b4332;      /* Deep Teal: Strong contrast for the hero */
+        --hero-bg: #0a2342;
 
-        /* Light Mode Text */
-        --text: #2b2d42;         /* Charcoal: High readability against sand */
-        --text-2: #4a4e69;       /* Muted Slate for subtext */
-        --text-3: #b7b7a4;       /* Eucalyptus Gray for deactivated elements */
+        /* light mode text */
+        --text: #1a2e4a;
+        --text-2: #3d5070;
+        --text-3: #6b80a3;
 
-        /* Borders & Shadows (Tinted to match the green) */
-        --border: rgba(27, 67, 50, 0.12);
-        --border2: rgba(183, 183, 164, 0.2);
-        --shadow: 0 4px 28px rgba(43, 45, 66, 0.06);
-        --shadow-hover: 0 12px 48px rgba(27, 67, 50, 0.1);
+        /* borders & shadows */
+        --border: rgba(10, 35, 66, 0.1);
+        --border2: rgba(10, 35, 66, 0.06);
+        --shadow: 0 2px 28px rgba(10, 35, 66, 0.09);
+        --shadow-hover: 0 8px 48px rgba(10, 35, 66, 0.14);
 
         --radius: 14px;
         --radius-sm: 8px;
         --transition: 0.32s cubic-bezier(0.4, 0, 0.2, 1);
-      }
+          }
 
 
 
@@ -89,7 +88,7 @@
         font-size: 16px;
       }
       body {
-        font-family: "Inter", sans-serif;
+        font-family: "Outfit", sans-serif;
         background: var(--bg);
         color: var(--text);
         line-height: 1.7;
