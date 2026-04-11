@@ -67,6 +67,9 @@
           <span class="nav-logo-name">Sought After Group</span>
           <span class="nav-logo-sub">Workplace Excellence</span>
         </a>
+        <a href="#hero" class="nav-logo-mobile">
+          <span class="nav-logo-name">S A G</span>
+        </a>
 
         <div class="nav-links" id="navLinks">
           <div class="nav-item">
@@ -104,7 +107,7 @@
           </div>
 
           <div class="nav-item">
-            <a href="#sectors" class="nav-link"
+            <a href="#serve" class="nav-link"
               >Who We Serve
               <svg class="chevron" viewBox="0 0 24 24" width="16">
                 <path
@@ -217,8 +220,53 @@
     <div id="mobile-drawer" role="dialog" aria-label="Navigation menu">
       <nav class="drawer-nav">
         <a href="#hero" onclick="closeDrawer()">Home</a>
-        <a href="#services" onclick="closeDrawer()">Services</a>
-        <a href="#serve" onclick="closeDrawer()">Who We Serve</a>
+
+        <div class="drawer-item">
+          <div href="#services" onclick="closeDrawer()">
+            <p>Services</p>
+
+            <svg class="chevron" viewBox="0 0 24 24" width="16">
+              <path
+                d="M6 9l6 6 6-6"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div class="drawer-subnav">
+            <a href="#services" onclick="closeDrawer()"
+              >Fractional HR Support</a
+            >
+            <a href="#services" onclick="closeDrawer()"
+              >HR System & Capacity Building</a
+            >
+            <a href="#services" onclick="closeDrawer()"
+              >Professional Development</a
+            >
+          </div>
+        </div>
+        <div class="drawer-item">
+          <a href="#serve" onclick="closeDrawer()">
+            Who We Serve
+            <svg class="chevron" viewBox="0 0 24 24" width="16">
+              <path
+                d="M6 9l6 6 6-6"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+              />
+            </svg>
+          </a>
+          <div class="drawer-subnav">
+            <a href="#serve" onclick="closeDrawer()">Childcare Centres</a>
+            <a href="#serve" onclick="closeDrawer()"
+              >Faith-Based Organizations</a
+            >
+            <a href="#serve" onclick="closeDrawer()">Small Businesses</a>
+          </div>
+        </div>
+
         <a href="#wellbeing" onclick="closeDrawer()">Wellbeing</a>
         <a href="#leads" onclick="closeDrawer()">Contact</a>
       </nav>

@@ -242,6 +242,12 @@ img {
   text-transform: uppercase;
   color: var(--gold);
 }
+.nav-logo-mobile {
+  display: none;
+}
+.nav-logo-mobile span {
+  font-size: 20px;
+}
 .nav-links {
   display: flex;
   gap: 25px;
@@ -480,6 +486,14 @@ img {
   border-color: var(--gold);
   color: var(--gold);
 }
+.drawer-subnav {
+  display: none;
+}
+.drawer-item div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
 
 /* =========================================================
    SECTION WRAPPER
@@ -707,7 +721,8 @@ section {
 .goal-actions {
   margin-top: 3rem;
   display: flex;
-  gap: 20px;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 .goal-actions .btn-ghost {
   color: var(--text-3);
@@ -1321,7 +1336,7 @@ footer {
     padding: 5.5rem 0 4rem;
   }
   .container {
-    padding: 0 1.25rem;
+    padding: 2rem 1.25rem;
   }
   .hero-inner {
     padding: 0 1.25rem;
@@ -1373,6 +1388,12 @@ footer {
   }
   #wellbeing {
     padding: 4rem 0;
+  }
+  .nav-logo {
+    display: none;
+  }
+  .nav-logo-mobile {
+    display: block;
   }
 }
 
