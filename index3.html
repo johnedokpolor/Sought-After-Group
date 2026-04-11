@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sought After Group | Workplace Excellence</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style1.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@700&display=swap"
       rel="stylesheet"
@@ -13,35 +13,72 @@
   <body>
     <nav>
       <div class="logo"><strong>SOUGHT AFTER</strong> GROUP</div>
+
       <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#sectors">Who We Serve</a>
-        <a href="#wellbeing">Wellbeing</a>
-        <button
-          id="themeToggle"
-          style="background: none; border: none; cursor: pointer; padding: 5px"
-        >
-          <svg
-            id="themeIcon"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="var(--text)"
-          >
-            <path
-              d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"
-            />
-          </svg>
+        <div class="nav-item">
+          <a href="#services" class="nav-link"
+            >Services
+            <svg class="chevron" viewBox="0 0 24 24" width="16">
+              <path
+                d="M6 9l6 6 6-6"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+              /></svg
+          ></a>
+          <div class="dropdown">
+            <div class="dropdown-content">
+              <div class="dropdown-column">
+                <h4>Fractional HR</h4>
+                <a href="#">Recruitment & Onboarding</a>
+                <a href="#">Performance Management</a>
+                <a href="#">Policy & Role Clarity</a>
+              </div>
+              <div class="dropdown-column">
+                <h4>Development</h4>
+                <a href="#">Professional Identity</a>
+                <a href="#">De-escalation Strategies</a>
+                <a href="#">Pedagogical Leadership</a>
+              </div>
+              <div class="dropdown-column">
+                <h4>Training Systems</h4>
+                <a href="#">Internal Learning Modules</a>
+                <a href="#">Course Development</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#sectors" class="nav-link"
+            >Who We Serve
+            <svg class="chevron" viewBox="0 0 24 24" width="16">
+              <path
+                d="M6 9l6 6 6-6"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+              /></svg
+          ></a>
+          <div class="dropdown">
+            <div class="dropdown-content">
+              <div class="dropdown-column">
+                <h4>Specialized Advisory</h4>
+                <a href="#">Childcare Centres</a>
+                <a href="#">Faith-Based Organizations</a>
+                <a href="#">Small Businesses</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#wellbeing" class="nav-link">Wellbeing</a>
+        </div>
+
+        <button id="themeToggle" onclick="toggleAllThemes()">
+          <span id="theme-label">Theme</span>
         </button>
-        <a href="#contact" class="btn">Book a Call</a>
-      </div>
-      <div class="burger" id="burger">
-        <svg viewBox="0 0 100 80">
-          <rect width="100" height="10" rx="5"></rect>
-          <rect y="30" width="100" height="10" rx="5"></rect>
-          <rect y="60" width="100" height="10" rx="5"></rect>
-        </svg>
       </div>
     </nav>
 
@@ -388,6 +425,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
-    <!-- <script src="script.js"></script> -->
+    <script src="script.js"></script>
   </body>
 </html>
